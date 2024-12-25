@@ -12,6 +12,7 @@ vim.opt.number = true
 vim.filetype.add({
   extension = {
     h = "c",
+    hpp = "cpp",
   },
 })
 
