@@ -13,7 +13,9 @@ return {
       },
     },
     config = function()
-      require("lspconfig").lua_ls.setup {}
+      local lsp = require("lspconfig")
+      lsp.lua_ls.setup {}
+      lsp.ccls.setup {}
     end,
   }
 }
