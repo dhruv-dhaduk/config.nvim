@@ -15,7 +15,7 @@ return {
         watermark = "",
       })
 
-      vim.keymap.set("v", ".ss", ":CodeSnapSave<CR>")
+      vim.keymap.set("v", "<space>ss", ":CodeSnapSave<CR>")
     end
   },
 }
