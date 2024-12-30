@@ -8,16 +8,16 @@ return {
     },
 
     config = function()
-      require('telescope').setup {
-        pickers = {
-          find_files = {
-            theme = "ivy"
-          },
-          help_tags = {
-            theme = "ivy"
-          }
-        }
-      }
+      -- require('telescope').setup {
+      --   pickers = {
+      --     find_files = {
+      --       theme = "ivy"
+      --     },
+      --     help_tags = {
+      --       theme = "ivy"
+      --     }
+      --   }
+      -- }
 
       vim.keymap.set("n", "<space>fd", require('telescope.builtin').find_files)
       vim.keymap.set("n", "<space>fh", require('telescope.builtin').help_tags)
