@@ -18,6 +18,7 @@ return {
       local lsp = require("lspconfig")
       lsp.lua_ls.setup { capabilities = capabilities }
       lsp.ccls.setup { capabilities = capabilities }
+      lsp.ts_ls.setup { capabilities = capabilities }
 
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)
