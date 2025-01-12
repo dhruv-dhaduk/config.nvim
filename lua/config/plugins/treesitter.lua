@@ -8,6 +8,7 @@ return {
           "c",
           "cpp",
           "make",
+          "cmake",
           "lua",
           "vim",
           "vimdoc",
