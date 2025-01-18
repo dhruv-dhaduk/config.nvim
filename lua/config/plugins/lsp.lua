@@ -25,7 +25,23 @@ return {
 
       if not has_marker_file(marker_file) then
         lsp.lua_ls.setup { capabilities = capabilities }
-        lsp.ccls.setup { capabilities = capabilities }
+        lsp.ccls.setup {
+          capabilities = capabilities,
+          init_options = {
+            compilationDatabaseDirectory = "build",
+            clang = {
+              extraArgs = {
+                "-I/usr/include/c++/11",
+                "-I/usr/include/x86_64-linux-gnu/c++/11",
+                "-I/usr/include/c++/11/backward",
+                "-I/usr/lib/gcc/x86_64-linux-gnu/11/include",
+                "-I/usr/local/include",
+                "-I/usr/include/x86_64-linux-gnu",
+                "-I/usr/include",
+              }
+            }
+          }
+        }
         lsp.ts_ls.setup { capabilities = capabilities }
         lsp.tailwindcss.setup { capabilities = capabilities }
         lsp.cmake.setup { capabilities = capabilities }
@@ -37,7 +53,6 @@ return {
         callback = function(args)
           local client = vim.lsp.get_client_by_id(args.data.client_id)
           if not client then return end
-
 
           if client:supports_method('textDocument/formatting') then
             -- Format the current buffer on save
