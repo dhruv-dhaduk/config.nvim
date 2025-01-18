@@ -1,3 +1,8 @@
+local function has_marker_file(marker)
+  local marker_path = vim.fn.getcwd() .. "/" .. marker
+  return vim.fn.filereadable(marker_path) == 1
+end
+
 return {
   {
     "neovim/nvim-lspconfig",
@@ -16,11 +21,17 @@ return {
     config = function()
       local capabilities = require('blink.cmp').get_lsp_capabilities()
       local lsp = require("lspconfig")
-      lsp.lua_ls.setup { capabilities = capabilities }
-      lsp.ccls.setup { capabilities = capabilities }
-      lsp.ts_ls.setup { capabilities = capabilities }
-      lsp.tailwindcss.setup { capabilities = capabilities }
-      lsp.cmake.setup { capabilities = capabilities }
+      local marker_file = ".nolsp"
+
+      if not has_marker_file(marker_file) then
+        lsp.lua_ls.setup { capabilities = capabilities }
+        lsp.ccls.setup { capabilities = capabilities }
+        lsp.ts_ls.setup { capabilities = capabilities }
+        lsp.tailwindcss.setup { capabilities = capabilities }
+        lsp.cmake.setup { capabilities = capabilities }
+      else
+        print("LSP disabled. (.nolsp file found)")
+      end
 
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)
