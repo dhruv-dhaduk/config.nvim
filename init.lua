@@ -20,6 +20,8 @@ vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>")
 vim.keymap.set("n", "<space>x", ":.lua<CR>")
 vim.keymap.set("v", "<space>x", ":lua<CR>")
 
+vim.keymap.set("n", "<space><space>y", "<cmd>%y<CR>")
+
 vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.json", "*.css", "*.scss", "*.md", "*.html" },
   callback = function()
