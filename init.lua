@@ -23,7 +23,7 @@ vim.keymap.set("v", "<space>x", ":lua<CR>")
 vim.keymap.set("n", "<space><space>y", "<cmd>%y<CR>")
 
 vim.api.nvim_create_autocmd("BufWritePost", {
-  pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.json", "*.css", "*.scss", "*.md", "*.html" },
+  pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.json", "*.css", "*.scss", "*.html" },
   callback = function()
     vim.fn.system("npx prettier --write " .. vim.fn.fnamemodify(vim.fn.expand("%"), ":."))
     vim.cmd("edit")
