@@ -42,9 +42,13 @@ return {
             }
           }
         }
-        lsp.ts_ls.setup { capabilities = capabilities }
+        lsp.ts_ls.setup {
+          capabilities = capabilities,
+          filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
+        }
         lsp.tailwindcss.setup { capabilities = capabilities }
         lsp.cmake.setup { capabilities = capabilities }
+        lsp.eslint.setup { capabilites = capabilities }
       else
         print("LSP disabled. (.nolsp file found)")
       end

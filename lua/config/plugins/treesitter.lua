@@ -20,7 +20,8 @@ return {
           "html",
           "css",
           "json",
-          "typescript"
+          "typescript",
+          "tsx"
         },
         auto_install = false,
         highlight = {
